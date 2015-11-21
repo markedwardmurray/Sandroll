@@ -7,12 +7,30 @@
 //
 
 import UIKit
+import YouTubePlayer
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, YouTubePlayerDelegate {
 
+    @IBOutlet weak var videoPlayer: YouTubePlayerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        videoPlayer.delegate = self
+        videoPlayer.loadVideoID("SQoA_wjmE9w")
+    }
+    
+    func playerReady(videoPlayer: YouTubePlayerView) {
+        videoPlayer.play()
+    }
+    
+    func playerStateChanged(videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
+        
+    }
+    
+    func playerQualityChanged(videoPlayer: YouTubePlayerView, playbackQuality: YouTubePlaybackQuality) {
+        
     }
 
     override func didReceiveMemoryWarning() {
